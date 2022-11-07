@@ -10,7 +10,7 @@ class BottomBarScreen extends GetView<BottomBarController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
-      body: controller.items[controller.selectedIndex.value],
+      body: controller.item(),
       bottomNavigationBar: BottomNavigationBar(
         items:  const [
           BottomNavigationBarItem(icon: Icon(Icons.home),label: 'Home'),

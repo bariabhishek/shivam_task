@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
             primary: AppTheme.primaryColor,
             secondary: AppTheme.accentColor,
           ),
-          fontFamily: "Rubik"),
+          ),
     );
   }
 }

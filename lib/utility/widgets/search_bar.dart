@@ -19,13 +19,13 @@ class SearchBar extends StatelessWidget {
     return TextField(
       controller: controller,
       onChanged: onChange,
-      style: TextStyle(color: AppTheme.primaryOffWhite, fontSize: 18),
+      style: TextStyle(color: AppTheme.primaryBlack, fontSize: 18),
       decoration: InputDecoration(
         fillColor: AppTheme.primaryOffWhite,
         filled: true,
         hintText: "Search here...",
         hintStyle: TextStyle(
-            color: AppTheme.primaryBlack.withOpacity(.8),
+            color: AppTheme.primaryBlack,
             fontSize: 18,
             fontWeight: FontWeight.w300),
         prefixIcon:  Icon(

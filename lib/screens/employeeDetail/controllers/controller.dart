@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shivam_task/service/employee_service/employee_service.dart';
 
-import '../../employeeList/views/employe_list.dart';
+import '../../../models/employee.dart';
 
+class EmployeeDetailController extends GetxController {
+  final id = Get.arguments?['id'];
 
-class EmployeeDetailController extends GetxController{
-  RxInt selectedIndex = 0.obs;
+  final RxBool _isDataLoading = false.obs;
+  var searchController = TextEditingController();
+  var isVisible = true.obs;
 
-  List items = [
-    EmployeeListScreen(),
-    Container(),
-  ];
+  bool get isDataLoading => _isDataLoading.value;
 
-  void onItemTapped(int index){
-    selectedIndex.value = index;
+  set isDataLoading(bool value) => _isDataLoading.value = value;
+
+  Employee? employee;
+
+  @override
+  void onInit() {
+    getData(id: id);
+    super.onInit();
   }
 
+  void getData({required id}) async {
+    isDataLoading = true;
+    try {
+      var res = await EmployeeService().getEmployeeById(id: id);
+      employee = Employee.fromJson(res);
+    } catch (e) {
+      debugPrint(e.toString());
+      rethrow;
+    } finally {
+      isDataLoading = false;
+    }
+  }
 }
